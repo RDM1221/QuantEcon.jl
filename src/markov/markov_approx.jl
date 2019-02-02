@@ -437,7 +437,7 @@ check persistency when `method` is `Quadrature` and give warning if needed
 
 """
 function warn_persistency(B::AbstractMatrix, ::Quadrature)
-    if any(eigen(B).values .> 0.9)
+    if any(abs.(eigen(B).values) .> 0.9)
         @warn("The quadrature method may perform poorly for highly persistent processes.")
     end
     return nothing
